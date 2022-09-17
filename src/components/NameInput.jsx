@@ -52,7 +52,14 @@ const NameInput = ({name, setName, setEnter, setColor}) => {
           <h1 style={{color: 'white'}} >
             Useless App
           </h1>
-          <p className='subText' style={{color: 'white', fontWeight: '400 !important'}} >Enter your shitty ass name and get into land of useless app, so you can interact with other useless people and share useless texts (if you want) </p>
+          <p 
+            className='subText' 
+            style={{color: 'white'}} 
+          >
+            Enter your shitty ass name and get into land of useless app (but should you?), 
+            so you can interact with other useless people (if there are any) 
+            and share useless texts (if you want)
+          </p>
         </div>
         <div 
           style={{
