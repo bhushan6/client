@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import { useState } from 'react'
+import Playground from './components/Playground';
+import NameInput from './components/NameInput';
 import './App.css';
 
+
 function App() {
+  const [name, setName] = useState('')
+
+  const [enter, setEnter] = useState(false)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {enter ? (<Playground name={name} />) : (<NameInput name={name} setName={setName} setEnter={setEnter} />)} 
     </div>
   );
 }
