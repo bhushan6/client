@@ -59,7 +59,7 @@ const Playground = ({name, color}) => {
       });
   
       ws.current.addEventListener( 'close', function ( event ) {
-        alert("CLOSED!!!!!!!!!!!!!!!!!!")
+        window.location.reload()
       });
   
       ws.current.addEventListener( 'message', function ( event ) {
