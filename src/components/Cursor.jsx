@@ -35,7 +35,7 @@ const Cursor = ({ws, name, bg}) => {
         }, 2000)
       }
 
-        // document.body.style.cursor = 'none'
+        document.body.style.cursor = 'none'
         const mouseMove = (e) => {
           setMousePosition({
             x: e.clientX,
@@ -62,8 +62,6 @@ const Cursor = ({ws, name, bg}) => {
                 removeMessage(id)
                 inputRef.current.value = ''
                 inputValue.current = null
-            }else{
-              console.log("NOT FOCUSED");
             }
           }
         }
@@ -143,6 +141,7 @@ const Cursor = ({ws, name, bg}) => {
                       height: '30px',
                       lineHeight: '16px',
                       border: '2px solid white',
+                      whiteSpace: 'nowrap'
                     }}
                     key={id}
                   >

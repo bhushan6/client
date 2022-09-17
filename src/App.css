@@ -26,13 +26,35 @@ body{
   /* position: relative; */
 }
 
+.subText{
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.form-btn:hover{
+  opacity: 0.5;
+  transition: all 0.2s ease-in;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
   font-size: 10px;
-  font-weight: 400;
   font-style: italic;
   opacity: 1; /* Firefox */
 }
+
+.credits{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  white-space: nowrap ;
+}
+
+/* .underline{ */
+  /* border-bottom: 3px solid #0168F3; */
+/* } */
 
 /* 4AE0BF */
 /* 0168F3 */

@@ -1,19 +1,20 @@
 import React, {useEffect, useState, useRef, useMemo} from "react"
 import User from "./User"
 import Cursor from './Cursor'
+import Info from "./Info"
 
 const textEncoder = new TextEncoder()
 const textDecoder = new TextDecoder()
 
-const colors = ['4AE0BF', '0168F3', 'DD0069', '5F1CA5', 'd054ab', 'ee4722', '48ff07', 'ee4722']
-const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)]
+// const colors = ['4AE0BF', '0168F3', 'DD0069', '5F1CA5', 'd054ab', 'ee4722', '48ff07', 'ee4722']
+// const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)]
 const toHexString = (bytes) => {
   return bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
 }
 
-const randomColor = getRandomColor()
+// const randomColor = getRandomColor()
 
-const Playground = ({name}) => {
+const Playground = ({name, color}) => {
     const [connectedUsers, setConnectedUsers] = useState([])
   
     const ws = useRef()
@@ -22,10 +23,10 @@ const Playground = ({name}) => {
 
     const view = useMemo(() => {
 
-      const color = randomColor.match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
+      const randomColor = color.match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
       const buf = textEncoder.encode(name);
-      return new Uint8Array([0, 3, ...color, ...buf])
-    }, [name])
+      return new Uint8Array([0, 3, ...randomColor, ...buf])
+    }, [name, color])
   
     useEffect(() => {
   
@@ -101,7 +102,8 @@ const Playground = ({name}) => {
     return (
       <>
         {connectedUsers.map((user, i) => user && <User key={user.name} bg={user.color} userId={i} socket={ws.current} name={user.name} />)}
-        {socket && <Cursor ws={socket} name={name} bg={randomColor} />}
+        {socket && <Cursor ws={socket} name={name} bg={color} />}
+        <Info borderColor={color} />
       </>
     );
   }
