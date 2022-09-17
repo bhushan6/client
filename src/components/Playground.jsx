@@ -2,17 +2,14 @@ import React, {useEffect, useState, useRef, useMemo} from "react"
 import User from "./User"
 import Cursor from './Cursor'
 import Info from "./Info"
+import LoadingScreen from "./LoadingScreen"
 
 const textEncoder = new TextEncoder()
 const textDecoder = new TextDecoder()
 
-// const colors = ['4AE0BF', '0168F3', 'DD0069', '5F1CA5', 'd054ab', 'ee4722', '48ff07', 'ee4722']
-// const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)]
 const toHexString = (bytes) => {
   return bytes.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '');
 }
-
-// const randomColor = getRandomColor()
 
 const Playground = ({name, color}) => {
     const [connectedUsers, setConnectedUsers] = useState([])
@@ -20,13 +17,25 @@ const Playground = ({name, color}) => {
     const ws = useRef()
 
     const [socket, setSocket] = useState()
+    const [connected, setConnected] = useState(false)
+
+    const [loadingMessage, setLoadingMessage] = useState("Loading")
 
     const view = useMemo(() => {
-
       const randomColor = color.match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
       const buf = textEncoder.encode(name);
       return new Uint8Array([0, 3, ...randomColor, ...buf])
     }, [name, color])
+
+    useEffect(() => {
+      let t = setTimeout(() => {
+        if(!connected) {
+          setLoadingMessage("Your 'net is slow af....how tf you still waiting, UGH")
+        }
+      }, 2000)
+
+      return () => t && clearTimeout(t)
+    }, [connected])
   
     useEffect(() => {
   
@@ -52,9 +61,8 @@ const Playground = ({name, color}) => {
       }
   
       ws.current.addEventListener( 'open', function ( event ) {
-        
+        setConnected(true)
         ws.current.send( view )
-        
         document.addEventListener('mousemove', mouseMove)      
       });
   
@@ -67,12 +75,9 @@ const Playground = ({name, color}) => {
         let id = dataview.getUint8( 0 );
         let command = dataview.getUint8(1)
   
-        if(command === 0){
-       
-        }else if(command === 8){
+        if(command === 8){
           setConnectedUsers(prev => {
             const dummy = [...prev]
-            console.log(dummy[id], "REMOVED", command, id, dataview);
             dummy[id] = null
             return dummy
           })
@@ -85,11 +90,9 @@ const Playground = ({name, color}) => {
               name : textDecoder.decode(dataview.buffer.slice(5, dataview.buffer.byteLength)),
               color: toHexString([dataview.getUint8(2), dataview.getUint8(3), dataview.getUint8(4)])
             }
-            console.log(dummy, "ADDED");
             return dummy
           })
         }
-  
       });
   
       return () => {
@@ -98,6 +101,14 @@ const Playground = ({name, color}) => {
       }
     }, [view])
   
+    if(!connected){
+      return (
+        <>
+          <LoadingScreen loadingMessage={loadingMessage} />
+        </>
+      )
+    }
+
   
     return (
       <>
