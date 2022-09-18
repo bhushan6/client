@@ -92,7 +92,8 @@ const Cursor = ({ws, name, bg}) => {
           // background: 'yellow',
           width: "fit-content",
           height: "fit-content",
-          paddingLeft: '10px'
+          paddingLeft: '10px',
+          zIndex: '1000000000000000'
         }}
       >
         <div

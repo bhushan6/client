@@ -19,7 +19,7 @@ const Playground = ({name, color}) => {
     const [socket, setSocket] = useState()
     const [connected, setConnected] = useState(false)
 
-    const [loadingMessage, setLoadingMessage] = useState("Loading")
+    const [loadingMessage, setLoadingMessage] = useState("Loading...")
 
     const view = useMemo(() => {
       const randomColor = color.match(/.{1,2}/g).map((byte) => parseInt(byte, 16))

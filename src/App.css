@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-
 * {
   margin: 0;
   padding: 0;
@@ -18,12 +17,6 @@ body{
 
 .cursor {
   pointer-events: none;
-  /* width: 10px; */
-  /* height: 10px; */
-  /* border-radius: 50%; */
-  /* background-color: #1e91d6; */
-  /* padding: 10px; */
-  /* position: relative; */
 }
 
 .subText{
@@ -53,7 +46,6 @@ body{
 }
 
 .mobileApp {
-  /* background-color: red; */
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -66,12 +58,3 @@ body{
 .mobileApp h1{
   font-size: 24px;
 }
-
-/* .underline{ */
-  /* border-bottom: 3px solid #0168F3; */
-/* } */
-
-/* 4AE0BF */
-/* 0168F3 */
-/* DD0069 */
-/* 5F1CA5 */
