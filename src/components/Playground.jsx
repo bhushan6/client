@@ -4,6 +4,8 @@ import Cursor from './Cursor'
 import Info from "./Info"
 import LoadingScreen from "./LoadingScreen"
 
+//1,4,3,8,2
+
 const textEncoder = new TextEncoder()
 const textDecoder = new TextDecoder()
 
@@ -39,7 +41,7 @@ const Playground = ({name, color}) => {
   
     useEffect(() => {
   
-      ws.current = new WebSocket( 'wss://realtime-chat-server.glitch.me/');
+      ws.current = new WebSocket( 'wss://whimsical-silly-crowd.glitch.me/');
       ws.current.binaryType = 'arraybuffer';
       
       setSocket(ws.current)
@@ -92,6 +94,8 @@ const Playground = ({name, color}) => {
             }
             return dummy
           })
+        }else if(command === 2){
+            ws.current.send(dataview)
         }
       });
   
