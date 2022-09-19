@@ -32,7 +32,7 @@ const Cursor = ({ws, name, bg}) => {
             delete dummy[id]
             return dummy
           })
-        }, 2000)
+        }, 5000)
       }
 
         document.body.style.cursor = 'none'

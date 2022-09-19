@@ -19,7 +19,7 @@ const User = ({userId, socket, name, bg}) => {
             delete dummy[id]
             return dummy
           })
-        }, 2000)
+        }, 5000)
       }
   
       const socketMessage = ( event ) => {
