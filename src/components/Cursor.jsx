@@ -44,7 +44,6 @@ const Cursor = ({ws, name, bg}) => {
         };
 
         const keyPressed = e => {
-          // console.log(e.code)
           if(e.code === 'Tab'){
             e.preventDefault()
           }if(e.code === 'Slash'){

@@ -50,8 +50,6 @@ const Playground = ({name, color}) => {
         const x = parseFloat( e.clientX/window.innerWidth);
         const y = parseFloat( e.clientY/window.innerHeight);
 
-        console.log({x, y});
-  
         let command;
         command = new DataView( new ArrayBuffer( 1 + 1 + 4 + 4 ) );
         command.setUint8( 1, 1 );

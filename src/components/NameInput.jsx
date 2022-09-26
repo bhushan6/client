@@ -12,7 +12,6 @@ const NameInput = ({name, setName, setEnter, setColor}) => {
   }
 
   const keyPressed = e => {
-    console.log(">>>>>>>>>>>>");
     if(e.code === 'Enter'){
       submit()
     }
