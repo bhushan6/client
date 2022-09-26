@@ -5,8 +5,6 @@ const textDecoder = new TextDecoder()
 
 const User = ({userId, socket, name, bg}) => {
 
-    console.log(userId);
-
     const [pos, setPos] = useState({x: 0, y: 0})
     const [messages, setMessages] = useState({})
   
@@ -114,7 +112,7 @@ const User = ({userId, socket, name, bg}) => {
                     background: bg? `#${bg}`: 'green',
                     top: "11px",
                     left: "11px",
-                    borderRadius: "50%",
+                    borderRadius: "20px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -125,25 +123,27 @@ const User = ({userId, socket, name, bg}) => {
                   <div
                     style={{
                       height: "20px",
-                      width: "20px",
-                      borderRadius: "50%",
+                      minWidth: "100px",
+                      borderRadius: "20px",
                       display: "flex",
-                      justifyContent: "center",
+                      justifyContent: "flex-start",
                       alignItems: "center",
                       border: "2px solid black",
                       background: 'white',
-                      color: 'black'
+                      color: 'black',
+                      padding: '2px 5px'
                     }}
                   >
-                      <p>{name?.charAt(0).toUpperCase()}</p>
+                      {/* <p>{name?.charAt(0).toUpperCase()}</p> */}
+                      <p style={{textTransform: 'capitalize', whiteSpace: 'nowrap'}} >{name? name : ""}</p>
                   </div>
                 </div>
               </div>
               <div
                 style={{
                   position: "absolute",
-                  bottom: '-2px',
-                  left: "100%",
+                  bottom: '34px',
+                  left: "20px",
                   paddingLeft: '12px'
                 }}
               >
