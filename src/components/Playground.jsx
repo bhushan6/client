@@ -47,14 +47,16 @@ const Playground = ({name, color}) => {
       setSocket(ws.current)
   
       const mouseMove = e => {
-        const x = parseInt( e.clientX );
-        const y = parseInt( e.clientY );
+        const x = parseFloat( e.clientX/window.innerWidth);
+        const y = parseFloat( e.clientY/window.innerHeight);
+
+        console.log({x, y});
   
         let command;
-        command = new DataView( new ArrayBuffer( 1 + 1 + 2 + 2 ) );
+        command = new DataView( new ArrayBuffer( 1 + 1 + 4 + 4 ) );
         command.setUint8( 1, 1 );
-        command.setUint16( 2, x );
-        command.setUint16( 4, y );
+        command.setFloat32( 2, x );
+        command.setFloat32( 6, y );
   
         if ( ws.current.readyState === WebSocket.OPEN ) {
           ws.current.send( command.buffer );

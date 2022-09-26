@@ -29,8 +29,8 @@ const User = ({userId, socket, name, bg}) => {
         let command = dataview.getUint8(1)
         if(id === userId){
           if(command === 1){
-            let x = dataview.getInt16(2)
-            let y = dataview.getInt16(4)
+            let x = dataview.getFloat32(2)* window.innerWidth
+            let y = dataview.getFloat32(6)* window.innerHeight
             setPos({x, y})
           }else if(command === 4){
             let newMessage = textDecoder.decode(dataview.buffer.slice(2, dataview.buffer.byteLength))
