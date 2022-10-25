@@ -55,9 +55,7 @@ const NameInput = ({name, setName, setEnter, setColor}) => {
             className='subText' 
             style={{color: 'white'}} 
           >
-            Enter your shitty ass name and get into land of useless app (but should you?), 
-            so you can interact with other useless people (if there are any) 
-            and share useless texts (if you want)
+            Please enter your name to get started
           </p>
         </div>
         <div 
@@ -103,7 +101,7 @@ const NameInput = ({name, setName, setEnter, setColor}) => {
         <div
           className='credits'
         >
-          <p>Made (stole) by an idiot for the idiots</p>
+          <p>Made (stole) by an Bhushan</p>
         </div>
       </div>
     )

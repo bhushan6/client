@@ -5,11 +5,7 @@ const MobileFallback = () => {
   return (
     <div className='mobileApp' >
         <h1>
-            Why'd you open a web app on mobile browser,
-            web apps are made for experiencing on desktops and laptops.
-            Why you're such a pathetic human being.
-            You're the reasons web developers are unhappy and stressed.
-            Please voluteer to make a world better place by killing yourself
+            Currently does not support mobile, Please visit using Laptop or desktop
         </h1>
     </div>
   )
