@@ -101,7 +101,7 @@ const NameInput = ({name, setName, setEnter, setColor}) => {
         <div
           className='credits'
         >
-          <p>Made (stole) by an Bhushan</p>
+          <p>Made (stole) by Bhushan</p>
         </div>
       </div>
     )
